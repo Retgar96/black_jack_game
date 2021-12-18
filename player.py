@@ -1,9 +1,11 @@
 class Player:
-    def __init__(self, bank, name):
+    def __init__(self, bank, name, hand, score=0):
         self.bank = bank
         self.name = name
         self.status = True
-        self.hand = {}
+        self.hand = hand
+        self.score = score
+        print('player: ', self.name, 'created')
 
     def minus_bank(self, value):
         if self.bank >= value and self.status:

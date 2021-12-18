@@ -1,74 +1,24 @@
 # from card import Card
 import random
 
+
 class Deck:
 
     def __init__(self, count_deck):
         self.count_deck = count_deck
-        self.cards = {'A_CH': 1 * self.count_deck,
-                      'A_BY': 1 * self.count_deck,
-                      'A_KR': 1 * self.count_deck,
-                      'A_PI': 1 * self.count_deck,
+        self.count_card = 1 * self.count_deck
+        score = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+        suit = ['ch', 'by', 'kr', 'pi']
+        deck = []
+        i = 0
+        while i <= self.count_deck:
+            i += 1
+            for y in score:
+                for z in suit:
+                    deck.append({'score': y, 'suit': z})
+        self.deck = deck
+        self.status = True
 
-                      'TWO_CH': 1 * self.count_deck,
-                      'TWO_BY': 1 * self.count_deck,
-                      'TWO_KR': 1 * self.count_deck,
-                      'TWO_PI': 1 * self.count_deck,
-
-                      'THREE_CH': 1 * self.count_deck,
-                      'THREE_BY': 1 * self.count_deck,
-                      'THREE_KR': 1 * self.count_deck,
-                      'THREE_PI': 1 * self.count_deck,
-
-                      'FOUR_CH': 1 * self.count_deck,
-                      'FOUR_BY': 1 * self.count_deck,
-                      'FOUR_KR': 1 * self.count_deck,
-                      'FOUR_PI': 1 * self.count_deck,
-
-                      'FIVE_CH': 1 * self.count_deck,
-                      'FIVE_BY': 1 * self.count_deck,
-                      'FIVE_KR': 1 * self.count_deck,
-                      'FIVE_PI': 1 * self.count_deck,
-
-                      'SIX_CH': 1 * self.count_deck,
-                      'SIX_BY': 1 * self.count_deck,
-                      'SIX_KR': 1 * self.count_deck,
-                      'SIX_PI': 1 * self.count_deck,
-
-                      'SEVEN_CH': 1 * self.count_deck,
-                      'SEVEN_BY': 1 * self.count_deck,
-                      'SEVEN_KR': 1 * self.count_deck,
-                      'SEVEN_PI': 1 * self.count_deck,
-
-                      'EIGHT_CH': 1 * self.count_deck,
-                      'EIGHT_BY': 1 * self.count_deck,
-                      'EIGHT_KR': 1 * self.count_deck,
-                      'EIGHT_PI': 1 * self.count_deck,
-
-                      'NINE_CH': 1 * self.count_deck,
-                      'NINE_BY': 1 * self.count_deck,
-                      'NINE_KR': 1 * self.count_deck,
-                      'NINE_PI': 1 * self.count_deck,
-
-                      'TEN_CH': 1 * self.count_deck,
-                      'TEN_BY': 1 * self.count_deck,
-                      'TEN_KR': 1 * self.count_deck,
-                      'TEN_PI': 1 * self.count_deck,
-
-                      'JACK_CH': 1 * self.count_deck,
-                      'JACK_BY': 1 * self.count_deck,
-                      'JACK_KR': 1 * self.count_deck,
-                      'JACK_PI': 1 * self.count_deck,
-
-                      'QUEEN_CH': 1 * self.count_deck,
-                      'QUEEN_BY': 1 * self.count_deck,
-                      'QUEEN_KR': 1 * self.count_deck,
-                      'QUEEN_PI': 1 * self.count_deck,
-
-                      'KING_CH': 1 * self.count_deck,
-                      'KING_BY': 1 * self.count_deck,
-                      'KING_KR': 1 * self.count_deck,
-                      'KING_PI': 1 * self.count_deck}
 
     def delete_card(self, card_name):
         if self.cards[card_name] > 0:
@@ -86,15 +36,14 @@ class Deck:
         try:
             key = random.choice(list(self.cards.keys()))
             self.delete_card(key)
-            return key
+            print(key)
+            if key != '':
+                return key
+            else:
+                return 'пусто'
         except IndexError:
+            self.status = False
             return 'Колода пуста'
-
-
-
-
-
-
 
     #     A_CH = Card('A', 'CH', self.count_deck)
     #     A_BY = Card('A', 'BY', self.count_deck)
